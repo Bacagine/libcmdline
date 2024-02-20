@@ -1,0 +1,51 @@
+.TH libcmdline 1
+.SH NAME
+libcmdline \- a Command Line Parse C Library
+
+.SH LIBRARY
+Command Line Parse C library
+.RI (libcmdline,\ \-lcmdline)
+
+.SH SYNOPSIS
+.nf
+.B #include <cmdline/cmdline.h>
+.PP
+.B #define\ CMDDATA_NODATA\ \ \ 0
+.B #define\ CMDDATA_REQUIRED\ 1
+.B #define\ CMDDATA_OPTIONAL\ 2
+.B #define\ CMDDATA_NULL\ \ \ \ \ 3
+
+.B
+
+.B typedef\ struct\ STRUCT_CMDLINE
+.B {
+.B\ \    char\ *pszLong;\ \ \ \ \ \ /* --help\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \    char\ *pszShort;\ \ \ \ \ /* -h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \   int\ iRequired;\ \ \ \ \ \ /* If command require arguments\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \   int\ iDataType;\ \ \ \ \ \ /* integer, string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \   char\ *pszArgument;\   /* file, number, etc\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \   bool\ bSet;\ \ \ \ \ \ \ \ \ \ /* if the command is setted \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \   char\ *pszDefault;\ \  /* Default value of the command \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B\ \   char\ *pszData;\ \ \ \ \ \ /* The variable with receive the argument \ \ \ \ \ \ \ \ \ \ */
+.B\ \   long\ lDataLength;\ \  /* The length of variable with receive the argument */
+.B\ \   char\ *pszHelp;\ \ \ \ \ \ /* Help message\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */
+.B }\ STRUCT_CMDLINE,\ *PSTRUCT_CMDLINE;
+
+.B void\ vShowSyntax(PSTRUCT_CMDLINE\ astCmdOpt);
+.B void\ vPrintUsage(const\ char\ *pszMsg,\ PSTRUCT_CMDLINE\ astCmdOpt);
+.B bool\ bParseCommandLine(int\ argc,\ char\ **argv,\ PSTRUCT_CMDLINE astCmdOpt);
+.B char\ *szGetProgramName(const\ char\ *szPathName);
+
+.SH DESCRIPTION
+This is a Command Line Parse C Library developed by Gustavo Bacagine. It is used in personal Bacagine C programs, but you can use this library in your programs too.
+
+.SH USAGE\ EXAMPLES
+You can see a usage examples of how to use this library at the github of the project at this link: <https://github.com/Bacagine/cmdline>
+
+.SH BUGS
+.PP
+For reporting bugs, send a email to <gustavo.bacagine@protonmail.com>
+
+.SH AUTHOR
+.PP
+Gustavo Bacagine <gustavo.bacagine@protonmail.com>

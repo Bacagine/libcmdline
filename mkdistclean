@@ -1,0 +1,9 @@
+make distclean
+
+gunzip ./man/libcmdline.3.gz
+#gunzip ./doc/*.gz
+# gunzip ./LICENSE.gz
+gunzip ./AUTHORS.gz
+# gunzip ./NEWS.gz
+gunzip ./README.gz
+
