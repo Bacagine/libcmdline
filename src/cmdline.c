@@ -68,7 +68,12 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
 
   for(ii = 1; ii < argc; ii++)
   {
-    pszArgument = strtok(argv[ii], "=");
+    int iReallocBuffer = snprintf(NULL, 0, "%s", argv[ii]);
+    char *pszArgv = (char *) malloc(sizeof(char) * (iReallocBuffer+1));
+
+    snprintf(pszArgv, iReallocBuffer+1, "%s", argv[ii]);
+
+    pszArgument = strtok(pszArgv, "=");
 
     if(argv[ii][0] == '-' && argv[ii][1] == '-')
     {
@@ -88,6 +93,9 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
     }
     else
     {
+      free(pszArgv);
+      pszArgv = NULL;
+
       return false;
     }
 
@@ -142,6 +150,9 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
               free(pszParameter);
               pszParameter = NULL;
 
+              free(pszArgv);
+              pszArgv = NULL;
+
               return false;
             }
             snprintf(astCmdOpt[jj].pszData, astCmdOpt[jj].lDataLength, "%s", pszParameter);
@@ -168,6 +179,9 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
         bLongCmd = false;
         bShortCmd = false;
 
+        free(pszArgv);
+        pszArgv = NULL;
+
         return false;
       }
     } // for
@@ -184,6 +198,9 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
     {
       bLongCmd = false;
     }
+
+    free(pszArgv);
+    pszArgv = NULL;
   } // for
 
   return true;
