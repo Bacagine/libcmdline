@@ -10,7 +10,7 @@
 
 #include "cmdline.h"
 
-void vShowSyntax(PSTRUCT_CMDLINE astCmdOpt)
+void vShowOptions(PSTRUCT_CMDLINE astCmdOpt)
 {
   int ii = 0;
  
@@ -51,10 +51,10 @@ void vShowSyntax(PSTRUCT_CMDLINE astCmdOpt)
   }
 }
 
-void vPrintUsage(const char *pszMsg, PSTRUCT_CMDLINE astCmdOpt)
+void vShowSyntax(const char *pszMsg, PSTRUCT_CMDLINE astCmdOpt)
 {
   printf("%s\n", pszMsg);
-  vShowSyntax(astCmdOpt);
+  vShowOptions(astCmdOpt);
 }
 
 bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
@@ -110,7 +110,6 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
           if(astCmdOpt[jj].iRequired == CMDDATA_REQUIRED)
           {
             if(pszParameter == NULL) return false;
-
             snprintf(astCmdOpt[jj].pszData, astCmdOpt[jj].lDataLength, "%s", pszParameter);
           }
 
@@ -152,7 +151,7 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
 
               free(pszArgv);
               pszArgv = NULL;
-
+              
               return false;
             }
             snprintf(astCmdOpt[jj].pszData, astCmdOpt[jj].lDataLength, "%s", pszParameter);
@@ -181,8 +180,6 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt)
 
         free(pszArgv);
         pszArgv = NULL;
-
-        return false;
       }
     } // for
 
@@ -227,3 +224,4 @@ char *szGetProgramName(const char *szPathName)
 
   return pszProgramName;
 }
+

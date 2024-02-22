@@ -46,8 +46,8 @@ typedef struct STRUCT_CMDLINE
 /**
  * Print the help message for the user
  */
-void vShowSyntax(PSTRUCT_CMDLINE astCmdOpt);
-void vPrintUsage(const char *pszMsg, PSTRUCT_CMDLINE astCmdOpt);
+void vShowOptions(PSTRUCT_CMDLINE astCmdOpt);
+void vShowSyntax(const char *pszMsg, PSTRUCT_CMDLINE astCmdOpt);
 
 /**
  * Check if what wass passed on the command line is valid
@@ -65,3 +65,4 @@ bool bParseCommandLine(int argc, char **argv, PSTRUCT_CMDLINE astCmdOpt);
 char *szGetProgramName(const char *szPathName);
 
 #endif /* _CMDLINE_H_ */
+

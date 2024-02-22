@@ -103,58 +103,58 @@ STRUCT_CMDLINE astCmdOpt[] = {
     "Show the version and exit."
   },
 /* 02 */
-  { "trace",       "t",                   CMDDATA_REQUIRED,          CMDTYPE_STR,                    "<file>",
-     FALSE,         "/var/log/trace.log",  gstCmdLine.szTrace,        sizeof(gstCmdLine.szTrace),
+  { "trace",       "t",                  CMDDATA_REQUIRED,          CMDTYPE_STR,                    "<file>",
+     FALSE,         "/var/log/trace.log", gstCmdLine.szTrace,        sizeof(gstCmdLine.szTrace),
     "<file> is the path of the debug file"
   },
 /* 03 */
-  { "debug-level", "d",                   CMDDATA_REQUIRED,           CMDTYPE_INT,                   "<number>",
-     FALSE,         "0",                   gstCmdLine.szDebugLevel,    sizeof(gstCmdLine.szDebugLevel),
+  { "debug-level", "d",                  CMDDATA_REQUIRED,           CMDTYPE_INT,                   "<number>",
+     FALSE,         "0",                  gstCmdLine.szDebugLevel,    sizeof(gstCmdLine.szDebugLevel),
     "<number> is the level of debug level"
   },
 /* 04 */
-  { "conf-file",   "c",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<file>",
-     FALSE,         "/etc/program.conf",   gstCmdLine.szConfFile,      sizeof(gstCmdLine.szConfFile),
+  { "conf-file",   "c",                  CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<file>",
+     FALSE,         "/etc/program.conf",  gstCmdLine.szConfFile,      sizeof(gstCmdLine.szConfFile),
     "<file> is the path of the configuration file (the default is /etc/program.conf)"
   },
 /* 05 */
-  { "prm-dir",     "p",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<directory>",
-     FALSE,         "../prm",              gstCmdLine.szPrmDir,        sizeof(gstCmdLine.szPrmDir),
+  { "prm-dir",     "p",                  CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<directory>",
+     FALSE,         "../prm",             gstCmdLine.szPrmDir,        sizeof(gstCmdLine.szPrmDir),
     "<directory> is the path of the software parameter directory (default is ../prm)"
   },
 /* 06 */
-  { "db-dir",      "D",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<directory>",
-     FALSE,         "../db",               gstCmdLine.szDbDir,         sizeof(gstCmdLine.szDbDir),
+  { "db-dir",      "D",                  CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<directory>",
+     FALSE,         "../db",              gstCmdLine.szDbDir,         sizeof(gstCmdLine.szDbDir),
     "<directory> is the path of the database directory of the software (default is ../db)"
   },
 /* 07 */
-  { "ip",          "i",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<ip>",
-     FALSE,         "",                    gstCmdLine.szIP,            sizeof(gstCmdLine.szIP),
+  { "ip",          "i",                  CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<ip>",
+     FALSE,         "",                   gstCmdLine.szIP,            sizeof(gstCmdLine.szIP),
     "<ip> is the IP of the server",
   },
 /* 08 */
-  { "host",        "H",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<host>",
-     FALSE,         "",                    gstCmdLine.szHost,          sizeof(gstCmdLine.szHost),
+  { "host",        "H",                  CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<host>",
+     FALSE,         "",                   gstCmdLine.szHost,          sizeof(gstCmdLine.szHost),
     "<host> is the hostname of the server"
   },
 /* 09 */
-  { "proxy",       "",                    CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<proxy>",
-     FALSE,         "",                    gstCmdLine.szProxy,         sizeof(gstCmdLine.szProxy),
+  { "proxy",       "",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<proxy>",
+     FALSE,         "",                   gstCmdLine.szProxy,         sizeof(gstCmdLine.szProxy),
     "<proxy> is the proxy"
   },
 /* 10 */
-  { "proxy-user",  "",                    CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<proxy>",
-     FALSE,         "",                    gstCmdLine.szProxy,         sizeof(gstCmdLine.szProxy),
+  { "proxy-user",  "",                   CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<proxy>",
+     FALSE,         "",                   gstCmdLine.szProxy,         sizeof(gstCmdLine.szProxy),
     "<proxy> is the name of the proxy user"
   },
 /* 11 */
-  { "proxy-password",  "",                CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<proxy>",
-     FALSE,         "",                    gstCmdLine.szProxy,         sizeof(gstCmdLine.szProxy),
+  { "proxy-password",  "",               CMDDATA_REQUIRED,           CMDTYPE_STR,                   "<proxy>",
+     FALSE,         "",                   gstCmdLine.szProxy,         sizeof(gstCmdLine.szProxy),
     "<proxy> is the password of the proxy user"
   },
 /* NOTE: NULL indicates the end of the array, NEVER REMOVE IT! */
-  { NULL,         NULL,                   CMDDATA_NULL,               CMDTYPE_NULL,                  "",
-     FALSE,        "",                     NULL,                       0,
+  { NULL,         NULL,                  CMDDATA_NULL,               CMDTYPE_NULL,                  "",
+     FALSE,        "",                    NULL,                       0,
     NULL
   }
 };
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
       "Usage: %s --options=<arguments>\nWhere the options and arguments may be receive the following content:\n", argv[0]
     );
     
-    vPrintUsage(szMsg, astCmdOpt);
+    vShowSyntax(szMsg, astCmdOpt);
     
     exit(EXIT_FAILURE);
   }
@@ -226,7 +226,7 @@ int main(int argc, char **argv)
       "Usage: %s --options=<arguments>\nWhere the options and arguments may be receive the following content:\n", argv[0]
     );
     
-    vPrintUsage(szMsg, astCmdOpt);
+    vShowSyntax(szMsg, astCmdOpt);
 
     return 0;
   }
